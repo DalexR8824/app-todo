@@ -12,7 +12,7 @@
 		<div class="col-md-8" style="text-align: center;">
 
 			<h1>Bienvenido ToDo</h1>
-			<div style="text-align: left;">
+			<div style="text-align: right;">
 				<%= link_to 'Nueva Tarea', new_task_path, :class => "btn btn-success"%>
 			</div>
 			
@@ -21,10 +21,10 @@
 			<table class="table">
 				<thead>
 					<tr>
+						<th>Estado</th>
 						<th>Nombre</th>
 						<th>Descripción</th>
 						<th>Fecha de Creación</th>
-						<th>Estado</th>
 						<th>Acciones</th>
 					</tr>
 				</thead>
@@ -33,33 +33,33 @@
 
 					<%- if t.status == 'Activa'%>
 
-						<tr style="background-color: green;">
+						<tr>
+							<td  style="background-color: green;"><%= t.status%></td>
 							<td><%= t.name%></td>
 							<td><%= t.description%></td>
 							<td><%= t.created_at%></td>
-							<td><%= t.status%></td>
-							<td><%= link_to "Editar", edit_task_path(t), :class => "btn btn-info btn-xs" %> 
-			                            <%= link_to "Eliminar", task_path(t), :method => :delete, data: {confirm: 'Esta seguro?'}, :class => "btn btn-danger btn-xs" %></td>
+							<td><%= link_to "Editar", edit_task_path(t), :class => "btn btn-outline-info" %> 
+			                            <%= link_to "Eliminar", task_path(t), :method => :delete, data: {confirm: 'Esta seguro?'}, :class => "btn btn-outline-danger" %></td>
 							
 						</tr>
 						<%- elsif t.status == 'Progreso'%>
-							<tr style="background-color: yellow;">
+							<tr >
+								<td style="background-color: yellow;"><%= t.status%></td>
 								<td><%= t.name%></td>
 								<td><%= t.description%></td>
 								<td><%= t.created_at%></td>
-								<td><%= t.status%></td>
-								<td><%= link_to "Editar", edit_task_path(t), :class => "btn btn-info btn-xs" %> 
-				                            <%= link_to "Eliminar", task_path(t), :method => :delete, data: {confirm: 'Esta seguro?'}, :class => "btn btn-danger btn-xs" %></td>
+								<td><%= link_to "Editar", edit_task_path(t), :class => "btn btn-outline-info" %> 
+				                            <%= link_to "Eliminar", task_path(t), :method => :delete, data: {confirm: 'Esta seguro?'}, :class => "btn btn-outline-danger" %></td>
 								
 							</tr>
 						<%- else t.status == 'Finalizada'%>
-							<tr style="background-color: red;">
+							<tr >
+								<td style="background-color: red;"><%= t.status%></td>
 								<td><%= t.name%></td>
 								<td><%= t.description%></td>
 								<td><%= t.created_at%></td>
-								<td><%= t.status%></td>
-								<td><%= link_to "Editar", edit_task_path(t), :class => "btn btn-info btn-xs" %> 
-				                            <%= link_to "Eliminar", task_path(t), :method => :delete, data: {confirm: 'Esta seguro?'}, :class => "btn btn-danger btn-xs" %></td>
+								<td><%= link_to "Editar", edit_task_path(t), :class => "btn btn-outline-info" %> 
+				                            <%= link_to "Eliminar", task_path(t), :method => :delete, data: {confirm: 'Esta seguro?'}, :class => "btn btn-outline-danger" %></td>
 								
 							</tr>
 					<% end %>	
